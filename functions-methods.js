@@ -9,11 +9,9 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 const getEmailDomain = emailAdress => {
-    for (let i = 0; i < emailAdress.length; i++) {
-        if(emailAdress.charAt(i) === "@") {
-            return emailAdress.substring(i);
-        }
-    }
+    const atSign = emailAdress.indexOf("@")
+
+            return emailAdress.substring(atSign + 1);
 }
 const outcome1 = getEmailDomain("robbert.ijpelaar@novi-education.nl");
 
@@ -74,4 +72,3 @@ const checkEmailValidity = emailAdres => {
 console.log(checkEmailValidity("robbertijpelaar93@gmail.com"));
 console.log(checkEmailValidity("robbertijpelaar93gmail.com")); // mist de @
 console.log(checkEmailValidity("robbertijpelaar93@gmail.com.")); // punt op het einde
-
