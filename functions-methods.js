@@ -8,8 +8,14 @@
 // getEmailDomain("n.eeken@novi-education.nl") geeft novi-education.nl
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
+const getEmailDomain = emailAdress => {
+    const atSign = emailAdress.indexOf("@")
 
+            return emailAdress.substring(atSign + 1);
+}
+const outcome1 = getEmailDomain("robbert.ijpelaar@novi-education.nl");
 
+console.log(outcome1);
 
 
 /* Opdracht  2 */
@@ -20,6 +26,28 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+const typeOfEmail = emailAdress => {
+
+const email = emailAdress.substring(emailAdress.indexOf("@"));
+
+    switch (email) {
+        case "@novi-education.nl":
+            return "Student";
+            break;
+        case "@novi.nl":
+            return "Medewerker";
+            break;
+        default:
+            return "Extern";
+    }
+}
+
+const outcome2a = typeOfEmail("robbert.ijpelaar@novi-education.nl");
+const outcome2b = typeOfEmail("robbert.ijpelaar@novi.nl");
+const outcome2c = typeOfEmail("robbertijpelaar93@gmail.com");
+console.log(outcome2a);
+console.log(outcome2b);
+console.log(outcome2c);
 
 
 /* Opdracht  3 */
@@ -34,3 +62,18 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+const checkEmailValidity = emailAdres => {
+    let valid = false;
+    const lastIndex = emailAdres.length - 1;
+
+    if(emailAdres.includes("@") && !emailAdres.includes(",") && !(emailAdres.charAt(lastIndex) === ".")) {
+        valid = true;
+    }
+
+    return valid;
+}
+
+console.log(checkEmailValidity("robbertijpelaar93@gmail.com"));
+console.log(checkEmailValidity("robbertijpelaar93gmail.com")); // mist de @
+console.log(checkEmailValidity("robbertijpelaar93@gmail.com.")); // punt op het einde
